@@ -24,7 +24,7 @@ if (hamburger) {
 // Mobile nav styles injected
 const mobileStyle = document.createElement('style');
 mobileStyle.textContent = `
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     .nav-links.mobile-open {
       display: flex;
       flex-direction: column;
