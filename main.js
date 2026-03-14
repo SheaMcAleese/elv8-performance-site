@@ -24,30 +24,28 @@ if (hamburger) {
 // Mobile nav styles injected
 const mobileStyle = document.createElement('style');
 mobileStyle.textContent = `
-  @media (max-width: 768px) {
-    .nav-links.mobile-open {
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      top: 72px; left: 0; right: 0;
-      background: rgba(15,15,15,0.98);
-      backdrop-filter: blur(12px);
-      padding: 32px 24px 40px;
-      gap: 28px;
-      border-bottom: 1px solid rgba(184,155,94,0.15);
-      z-index: 99;
-    }
-    .nav-links.mobile-open a {
-      font-size: 1.1rem;
-      opacity: 0.85;
-    }
-    .nav-cta.mobile-open {
-      display: block;
-      position: fixed;
-      bottom: 28px; left: 24px; right: 24px;
-      text-align: center;
-      z-index: 99;
-    }
+  .nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 70px; left: 0; right: 0;
+    background: rgba(15,15,15,0.98);
+    backdrop-filter: blur(12px);
+    padding: 32px 24px 40px;
+    gap: 28px;
+    border-bottom: 1px solid rgba(184,155,94,0.15);
+    z-index: 99;
+  }
+  .nav-links.mobile-open a {
+    font-size: 1.1rem;
+    opacity: 0.85;
+  }
+  .nav-cta.mobile-open {
+    display: block;
+    position: fixed;
+    bottom: 28px; left: 24px; right: 24px;
+    text-align: center;
+    z-index: 99;
   }
 `;
 document.head.appendChild(mobileStyle);
