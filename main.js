@@ -51,9 +51,9 @@ mobileStyle.textContent = `
 document.head.appendChild(mobileStyle);
 
 // ---- ACTIVE NAV LINK ----
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
 document.querySelectorAll('.nav-links a').forEach(link => {
-  if (link.getAttribute('href') === currentPage) {
+  if (link.getAttribute('href') === currentPath) {
     link.style.color = 'var(--gold)';
     link.style.opacity = '1';
   }

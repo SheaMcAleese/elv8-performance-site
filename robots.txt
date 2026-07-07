@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elv8.nz/sitemap.xml
