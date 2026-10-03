@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://elv8.nz/</loc></url>
-  <url><loc>https://elv8.nz/problem</loc></url>
-  <url><loc>https://elv8.nz/framework</loc></url>
-  <url><loc>https://elv8.nz/speaking</loc></url>
-  <url><loc>https://elv8.nz/workshops</loc></url>
-  <url><loc>https://elv8.nz/advisory</loc></url>
-  <url><loc>https://elv8.nz/about</loc></url>
-  <url><loc>https://elv8.nz/insights</loc></url>
-  <url><loc>https://elv8.nz/contact</loc></url>
+  <url><loc>https://elv8.nz/ai-for-organisations.html</loc></url>
+  <url><loc>https://elv8.nz/speaking.html</loc></url>
+  <url><loc>https://elv8.nz/contact.html</loc></url>
 </urlset>
