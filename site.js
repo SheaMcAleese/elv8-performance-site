@@ -144,3 +144,156 @@ const COHORT_START = '';
     });
   });
 })();
+
+/* ---- Motion, "Reveal" (chosen 4 Oct 2026) -------------------------------
+   Only runs when the head script set html.motion, which it does only for
+   visitors who have not asked for reduced motion. The styles live at the end
+   of style.css. If anything here fails, motion is switched off and the page
+   is the static site. */
+(function () {
+  'use strict';
+
+  var root = document.documentElement;
+
+  function each(list, fn) { Array.prototype.forEach.call(list, fn); }
+  function nextFrame(fn) {
+    window.requestAnimationFrame(function () { window.requestAnimationFrame(fn); });
+  }
+
+  // The longest any headline waits before its last word starts to rise.
+  var MAX_STAGGER = 900;
+
+  // Wrap every word in two spans so it can rise out of its own mask. Inline
+  // elements such as <em> are kept, so the italic accent survives. Returns
+  // when the last word has landed, in ms.
+  function split(el, step) {
+    var count = el.textContent.trim().split(/\s+/).length;
+    step = Math.min(step, Math.floor(MAX_STAGGER / Math.max(1, count - 1)));
+    var n = 0;
+    (function walk(parent) {
+      each(Array.prototype.slice.call(parent.childNodes), function (node) {
+        if (node.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          node.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var w = document.createElement('span');
+            var wi = document.createElement('span');
+            w.className = 'w';
+            wi.className = 'wi';
+            wi.style.setProperty('--d', (n++ * step) + 'ms');
+            wi.textContent = part;
+            w.appendChild(wi);
+            frag.appendChild(w);
+          });
+          parent.replaceChild(frag, node);
+        } else if (node.nodeType === 1) {
+          walk(node);
+        }
+      });
+    })(el);
+    var last = Math.max(0, n - 1) * step;
+    el.style.setProperty('--ul', (last + 700) + 'ms');
+    el.classList.add('split');
+    return last + 1150;
+  }
+
+  // Once the words have landed, drop the masks so nothing is ever clipped.
+  function settleLater(el, ms) {
+    window.setTimeout(function () { el.classList.add('settled'); }, ms);
+  }
+
+  function run() {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        el.classList.add('in');
+        if (el.hasAttribute('data-settle')) settleLater(el, +el.getAttribute('data-settle'));
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.01 });
+
+    function words(el) {
+      el.setAttribute('data-settle', split(el, 55) + 250);
+      io.observe(el);
+    }
+    function reveal(el, i) {
+      el.classList.add('rv');
+      el.style.setProperty('--rv-d', (100 + Math.min(i, 4) * 110) + 'ms');
+      io.observe(el);
+    }
+
+    // Containers whose children are revealed one by one, and lists whose
+    // items are. Anything else is revealed as one piece.
+    var GROUPS = '.narrow, .sec-grid, .sec-body, .prose, .coach-grid, .about-grid, .about-copy, .cols-2, .cols-2 > div';
+    var LISTS = 'ol, ul, .cards, .faq';
+    function walk(parent) {
+      var i = 0;
+      each(parent.children, function (el) {
+        if (el.matches('h2')) { words(el); return; }
+        if (el.matches('.portrait')) { io.observe(el); return; }
+        if (el.matches(GROUPS)) {
+          if (el.matches('.sec-grid')) io.observe(el);
+          walk(el);
+          return;
+        }
+        if (el.matches(LISTS)) {
+          var j = 0;
+          each(el.children, function (item) { reveal(item, j++); });
+          return;
+        }
+        reveal(el, i++);
+      });
+    }
+
+    // The opening of each page plays on load; everything else as it arrives.
+    each(document.querySelectorAll('main > section'), function (sec) {
+      if (sec.matches('.hero, .page-head, .cc-hero, .thanks')) {
+        var h1 = sec.querySelector('h1');
+        var landed = h1 ? split(h1, 85) : 0;
+        if (!sec.matches('.hero')) {
+          var k = 0;
+          each(sec.querySelectorAll('.wrap > *'), function (el) {
+            if (el.matches('h1, .eyebrow')) return;
+            el.style.setProperty('--in-d', (Math.max(300, landed - 500) + k++ * 150) + 'ms');
+          });
+        }
+        nextFrame(function () {
+          sec.classList.add('in');
+          if (h1) {
+            h1.classList.add('in');
+            settleLater(h1, landed + 250);
+          }
+        });
+        return;
+      }
+      if (sec.matches('.block, .cc-sec.rule-top')) io.observe(sec);
+      each(sec.children, function (child) { if (child.matches('.wrap')) walk(child); });
+    });
+
+    // The header lifts off the page once you scroll.
+    var header = document.querySelector('.site-header');
+    if (header) {
+      var ticking = false;
+      var onScroll = function () {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(function () {
+          header.classList.toggle('scrolled', window.scrollY > 8);
+          ticking = false;
+        });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+  }
+
+  if (!root.classList.contains('motion')) return;
+  try {
+    run();
+    window.ELV8_MOTION_READY = true;
+  } catch (err) {
+    root.classList.remove('motion');
+  }
+})();

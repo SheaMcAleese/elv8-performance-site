@@ -12,7 +12,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script>document.documentElement.classList.add('js');</script>
+<script>(function (d) {
+  d.classList.add('js');
+  // Motion is only for visitors who have not asked for reduced motion. If
+  // site.js has not reported in within 2.5 seconds it switches back off, so
+  // a slow or failed script can never leave the page hidden.
+  try {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window) {
+      d.classList.add('motion');
+      window.setTimeout(function () { if (!window.ELV8_MOTION_READY) d.classList.remove('motion'); }, 2500);
+    }
+  } catch (e) {}
+})(document.documentElement);</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
