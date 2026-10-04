@@ -203,6 +203,40 @@ const COHORT_START = '';
     window.setTimeout(function () { el.classList.add('settled'); }, ms);
   }
 
+  // Count a number up to its real value, holding its final width so nothing
+  // around it moves.
+  function countUp(el) {
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if (!isFinite(target)) return;
+    el.classList.add('counting');
+    el.style.minWidth = el.getBoundingClientRect().width + 'px';
+    // Screen readers get the true number; the counting digits are hidden from them.
+    var spoken = document.createElement('span');
+    spoken.className = 'sr';
+    spoken.textContent = String(target);
+    el.parentNode.insertBefore(spoken, el);
+    el.setAttribute('aria-hidden', 'true');
+    var start = null;
+    var dur = 1600;
+    var step = function (now) {
+      if (start === null) start = now;
+      var t = Math.min(1, (now - start) / dur);
+      var eased = 1 - Math.pow(1 - t, 3);
+      if (t < 1) {
+        el.textContent = String(Math.round(target * eased));
+        window.requestAnimationFrame(step);
+      } else {
+        el.textContent = String(target);
+        el.classList.remove('counting');
+        el.style.minWidth = '';
+        el.removeAttribute('aria-hidden');
+        if (spoken.parentNode) spoken.parentNode.removeChild(spoken);
+      }
+    };
+    el.textContent = '0';
+    window.requestAnimationFrame(step);
+  }
+
   function run() {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -254,8 +288,8 @@ const COHORT_START = '';
         var landed = h1 ? split(h1, 85) : 0;
         if (!sec.matches('.hero')) {
           var k = 0;
-          each(sec.querySelectorAll('.wrap > *'), function (el) {
-            if (el.matches('h1, .eyebrow')) return;
+          each(sec.querySelectorAll('.wrap > *, .head-copy > *'), function (el) {
+            if (el.matches('h1, .eyebrow, .head-copy')) return;
             el.style.setProperty('--in-d', (Math.max(300, landed - 500) + k++ * 150) + 'ms');
           });
         }
@@ -276,6 +310,67 @@ const COHORT_START = '';
     // is always watched, wherever it sits, so it can never stay hidden.
     // Observing an element twice is harmless.
     each(document.querySelectorAll('.portrait, .sec-grid, .block, .cc-sec.rule-top'), function (el) { io.observe(el); });
+
+    // Additions 1 and 2: numbers count up to their real value when they
+    // arrive. The real value is always the last thing written.
+    var counter = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        countUp(e.target);
+        counter.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.01 });
+    each(document.querySelectorAll('[data-count]'), function (el) { counter.observe(el); });
+
+    // Additions 3 and 4: a gold line runs down through the numbered steps as
+    // you scroll, and each number lights up as the line reaches it.
+    var journeys = [];
+    each(document.querySelectorAll('ol.arc, ol.steps'), function (ol) {
+      if (ol.children.length < 2) return;
+      ol.classList.add('journey');
+      journeys.push(ol);
+    });
+    var measure = function () {
+      journeys.forEach(function (ol) {
+        var items = ol.children;
+        var mid = function (li) {
+          var c = window.getComputedStyle(li);
+          return li.offsetTop + parseFloat(c.paddingTop) + 20;
+        };
+        var top = mid(items[0]);
+        var bottom = mid(items[items.length - 1]);
+        ol.style.setProperty('--l-top', top + 'px');
+        ol.style.setProperty('--l-h', Math.max(0, bottom - top) + 'px');
+        ol._line = { top: top, height: Math.max(1, bottom - top) };
+      });
+    };
+    var follow = function () {
+      var line = window.innerHeight * 0.62;
+      journeys.forEach(function (ol) {
+        if (!ol._line) return;
+        var start = ol.getBoundingClientRect().top + ol._line.top;
+        var p = Math.min(1, Math.max(0, (line - start) / ol._line.height));
+        ol.style.setProperty('--p', p.toFixed(3));
+        each(ol.children, function (li) {
+          var y = li.getBoundingClientRect().top + parseFloat(window.getComputedStyle(li).paddingTop) + 20;
+          li.classList.toggle('lit', y <= line);
+        });
+      });
+    };
+    if (journeys.length) {
+      var jTicking = false;
+      var onJourney = function () {
+        if (jTicking) return;
+        jTicking = true;
+        window.requestAnimationFrame(function () { follow(); jTicking = false; });
+      };
+      measure();
+      follow();
+      window.addEventListener('scroll', onJourney, { passive: true });
+      window.addEventListener('resize', function () { measure(); onJourney(); });
+      // Fonts arriving late change the heights, so measure once more.
+      window.addEventListener('load', function () { measure(); onJourney(); });
+    }
 
     // The header lifts off the page once you scroll.
     var header = document.querySelector('.site-header');
@@ -301,4 +396,53 @@ const COHORT_START = '';
   } catch (err) {
     root.classList.remove('motion');
   }
+})();
+
+/* ---- Addition 5: the films ----------------------------------------------
+   Play and pause work for everyone. A film only starts by itself for visitors
+   who have not asked for reduced motion, pauses when scrolled out of view to
+   save the battery, and stays paused once someone presses pause. If a browser
+   refuses to autoplay (low power mode), the still image and play button stay. */
+(function () {
+  'use strict';
+
+  var motion = document.documentElement.classList.contains('motion');
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-film]'), function (box) {
+    var video = box.querySelector('video');
+    var btn = box.querySelector('[data-film-toggle]');
+    if (!video || !btn) return;
+
+    var heldByViewer = !motion;
+
+    var sync = function () {
+      var playing = !video.paused;
+      btn.classList.toggle('is-playing', playing);
+      btn.setAttribute('aria-label', playing ? 'Pause the film' : 'Play the film');
+    };
+    var tryPlay = function () {
+      var p = video.play();
+      if (p && p.catch) p.catch(function () { sync(); });
+    };
+
+    video.addEventListener('play', sync);
+    video.addEventListener('pause', sync);
+    btn.addEventListener('click', function () {
+      if (video.paused) { heldByViewer = false; tryPlay(); }
+      else { heldByViewer = true; video.pause(); }
+    });
+    sync();
+    box.classList.add('film-ready');
+
+    if (!motion) return;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        var inView = entries[entries.length - 1].isIntersecting;
+        if (inView && !heldByViewer) tryPlay();
+        else if (!inView && !video.paused) video.pause();
+      }, { threshold: 0.25 }).observe(box);
+    } else {
+      tryPlay();
+    }
+  });
 })();

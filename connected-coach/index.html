@@ -45,16 +45,25 @@
 </header>
 
 <main id="main">
-<section class="cc-hero">
+<section class="cc-hero has-film">
   <div class="wrap">
-    <p class="eyebrow">ELV8 Performance &middot; Founding cohort</p>
-    <h1>Most coaches use about five percent of what AI can do. <em>The chat box.</em></h1>
-    <p class="sub">Six weeks to build the other ninety five into how you actually coach.</p>
-    <p class="body lede">Not a course you watch. A small group of high-performance coaches, working on their own real coaching, until the system runs itself. No jargon. No code. Ever.</p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="#apply">Apply for a seat</a>
-      <a class="btn btn-ghost" href="#arc">See the six weeks</a>
+    <div class="head-copy">
+      <p class="eyebrow">ELV8 Performance &middot; Founding cohort</p>
+      <h1>Most coaches use about five percent of what AI can do. <em>The chat box.</em></h1>
+      <p class="sub">Six weeks to build the other ninety five into how you actually coach.</p>
+      <p class="body lede">Not a course you watch. A small group of high-performance coaches, working on their own real coaching, until the system runs itself. No jargon. No code. Ever.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#apply">Apply for a seat</a>
+        <a class="btn btn-ghost" href="#arc">See the six weeks</a>
+      </div>
     </div>
+    <!-- Addition 5: the Grind film (words from this page). -->
+    <figure class="film" data-film>
+      <video muted loop playsinline preload="metadata" disablepictureinpicture poster="../assets/media/elv8-grind-poster.jpg" aria-label="A 15-second film: the admin keeps eating the week. Periodisation, reports nobody reads, athlete feedback, session plans. Six weeks from now, that work still happens. It just stops being yours to grind through.">
+        <source src="../assets/media/elv8-grind.mp4" type="video/mp4">
+      </video>
+      <button class="film-toggle" type="button" data-film-toggle aria-label="Play the film"><span class="ico" aria-hidden="true"></span></button>
+    </figure>
     <dl class="facts">
       <div><dt>Format</dt><dd>Six weeks, live</dd></div>
       <div><dt>Cohort</dt><dd>Six coaches</dd></div>
@@ -67,7 +76,12 @@
 <section class="cc-sec rule-top">
   <div class="wrap narrow">
     <p class="eyebrow">The gap</p>
-    <p class="stat" aria-hidden="true">5<span>%</span></p>
+    <p class="stat" aria-hidden="true"><span class="stat-num" data-count="5">5</span><span>%</span></p>
+    <!-- Addition 2: the gap, drawn. Five percent filled, the rest left empty. -->
+    <div class="gap-bar" aria-hidden="true">
+      <div class="gap-track"><span class="gap-fill"></span></div>
+      <p class="gap-note">the other ninety five</p>
+    </div>
     <h2>You already know AI matters. <em>You are still typing into a box.</em></h2>
     <p class="lede">That is not a failing. It is where almost every coach is, because nobody has shown you the rest of it applied to <strong>coaching</strong> rather than to marketing or to code.</p>
     <p>Meanwhile the admin keeps eating the week. Session plans. Athlete feedback. Reports nobody reads. Periodisation in a spreadsheet you fight with. The parts of the job you actually got into coaching for keep getting squeezed by the parts you did not.</p>
