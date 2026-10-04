@@ -600,8 +600,7 @@ main > .dark:last-child { border-bottom: 1px solid var(--rule-dark); }
 }
 
 /* ===================================================== motion, "Reveal" ==== */
-/* Chosen 4 Oct 2026 from three versions (looks/motion-a.html is the original).
-   Headlines rise in word by word, a gold line draws under each italic accent,
+/* Headlines rise in word by word, a gold line draws under each italic accent,
    the gold rules draw themselves across, and content glides up as it scrolls
    into view. site.js does the work.
 
