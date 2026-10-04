@@ -272,6 +272,11 @@ const COHORT_START = '';
       each(sec.children, function (child) { if (child.matches('.wrap')) walk(child); });
     });
 
+    // Anything the CSS hides by structure alone (a portrait, a gold rule)
+    // is always watched, wherever it sits, so it can never stay hidden.
+    // Observing an element twice is harmless.
+    each(document.querySelectorAll('.portrait, .sec-grid, .block, .cc-sec.rule-top'), function (el) { io.observe(el); });
+
     // The header lifts off the page once you scroll.
     var header = document.querySelector('.site-header');
     if (header) {

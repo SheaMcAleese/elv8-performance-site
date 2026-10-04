@@ -688,6 +688,16 @@ main > .dark:last-child { border-bottom: 1px solid var(--rule-dark); }
 .motion .eyebrow.rv { transform: none; }
 .motion .rv.in { opacity: 1; transform: none; }
 
+/* Anything that takes keyboard focus shows at once, never mid-fade. The
+   fade is dropped, not shortened: a fade already waiting on its delay would
+   otherwise keep waiting. */
+.motion .rv:focus-within,
+.motion .hero :is(.lede, .btn-row):focus-within,
+.motion :is(.page-head, .cc-hero, .thanks) .wrap > :not(h1):not(.eyebrow):focus-within {
+  opacity: 1; transform: none;
+  transition: none;
+}
+
 /* The portrait wipes up and its gold frame settles behind it. Nothing is set
    on .portrait itself: that would stop the photo blending into the page. */
 .motion .portrait img {
