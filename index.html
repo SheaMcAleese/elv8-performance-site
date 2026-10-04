@@ -1,284 +1,209 @@
-<!DOCTYPE html>
-<!-- elv8.nz -->
-<html lang="en">
-
+<!doctype html>
+<html lang="en-NZ">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ELV8 Performance | Shea McAleese</title>
-  <meta name="description"
-    content="High-performance leadership advisory, keynotes, and workshops for leaders under pressure. Shea McAleese, 4x Olympian.">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ELV8 Performance | Shea McAleese</title>
+<meta name="description" content="Hands-on AI sessions for leadership and staff teams, from a 4x Olympian who builds the AI systems he teaches.">
+<meta name="theme-color" content="#F7F5EF">
+<link rel="canonical" href="https://elv8.nz/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ELV8 Performance">
+<meta property="og:title" content="ELV8 Performance | Shea McAleese">
+<meta property="og:description" content="Hands-on AI sessions for leadership and staff teams, from a 4x Olympian who builds the AI systems he teaches.">
+<meta property="og:url" content="https://elv8.nz/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>(function (d) {
+  d.classList.add('js');
+  // Motion is only for visitors who have not asked for reduced motion. If
+  // site.js has not reported in within 2.5 seconds it switches back off, so
+  // a slow or failed script can never leave the page hidden.
+  try {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window) {
+      d.classList.add('motion');
+      window.setTimeout(function () { if (!window.ELV8_MOTION_READY) d.classList.remove('motion'); }, 2500);
+    }
+  } catch (e) {}
+})(document.documentElement);</script>
 </head>
-
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-  <!-- NAV -->
-  <nav>
-    <a class='logo' href='/'>
-      <img src="assets/ELV8_White.png" alt="ELV8" style="height: 42px;">
-    </a>
-    <ul class="nav-links">
-      <li><a href='/'>Home</a></li>
-      <li><a href='/problem'>The Problem</a></li>
-      <li><a href='/framework'>Framework</a></li>
-      <li><a href='/speaking'>Speaking</a></li>
-      <li><a href='/workshops'>Workshops</a></li>
-      <li><a href='/advisory'>Advisory</a></li>
-      <li><a href='/about'>About</a></li>
-      <li><a href='/insights'>Insights</a></li>
-    </ul>
-    <a class='nav-cta btn-secondary' href='/contact' style='padding: 10px 20px; font-size: 0.65rem;'>Contact</a>
-    <div class="hamburger"><span></span><span></span><span></span></div>
-  </nav>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/"><img src="assets/elv8-white-alpha.png" width="704" height="217" alt="ELV8 Performance, home"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span class="sr">Menu</span><span class="bars" aria-hidden="true"></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Main" data-nav>
+      <ul>
+        <li><a href="/ai-for-organisations.html">For organisations</a></li>
+        <li><a href="/connected-coach/">For coaches</a></li>
+        <li><a href="/speaking.html">Speaking</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <a class="btn btn-ghost" href="/contact.html" data-booking>Book a 20-minute call</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- HERO -->
+<main id="main">
+
   <section class="hero">
-    <div class="hero-circle-photo">
-      <img src="assets/shea_mcaleese.png" alt="Shea McAleese">
-    </div>
-    <div class="container">
-      <p class="hero-eyebrow">Shea McAleese · ELV8 Performance</p>
-      <h1>Clear Decisions<br><em>When Pressure<br>Rises.</em></h1>
-      <div class="gold-line"></div>
-      <p class="hero-sub">When pressure rises, perspective narrows. Thinking speeds up. Listening reduces. Alignment
-        fractures.<br><br>I work with leaders and high-performance teams to prevent that collapse, protecting the
-        quality of decisions that shape outcomes.</p>
-      <p style="font-size: 0.85rem; opacity: 0.5; margin-top: 20px;">Based in NZ. Available globally.</p>
-      <div class="cta-group">
-        <a class='btn-primary' href='/speaking'>Book a Keynote</a>
-        <a class='btn-secondary' href='/contact'>Work With Me</a>
+    <div class="wrap">
+      <p class="eyebrow">ELV8 PERFORMANCE</p>
+      <h1>Your team already uses AI. Make it <em>good</em> at it.</h1>
+      <div class="hero-foot">
+        <p class="lede">Hands-on AI sessions for leadership and staff teams, from a 4x Olympian who builds the AI systems he teaches.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="/contact.html" data-booking>Book a 20-minute call</a>
+          <a class="btn btn-ghost" href="/connected-coach/">For coaches: The Connected Coach</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <!-- Addition 1: proof band. Every figure and label is from the approved copy. -->
+  <section class="proof">
+    <div class="wrap">
+      <ul class="proof-list">
+        <li><span class="proof-num" data-count="4">4</span> <span class="proof-lbl">Olympic Games</span></li>
+        <li><span class="proof-num" data-count="320">320</span> <span class="proof-lbl">caps for New Zealand</span></li>
+        <li><span class="proof-num" data-count="20">20</span> <span class="proof-lbl">years in elite sport</span></li>
+      </ul>
+    </div>
+  </section>
 
-  <!-- THE REAL RISK -->
-  <section style="background-color: var(--ivory); color: var(--charcoal);">
-    <div class="container">
-      <div class="two-col-3-2">
-        <div>
-          <span class="section-label fade-up">The Real Risk</span>
-          <h2 class="fade-up" style="color: var(--black);">Performance rarely breaks because of capability.</h2>
-          <div class="gold-line fade-up" style="margin: 32px 0;"></div>
-          <p class="fade-up" style="color: var(--charcoal);">It breaks because perspective narrows under pressure.</p>
-          <br>
-          <p class="fade-up" style="color: var(--charcoal);">When load increases, a predictable sequence begins. Most leaders don't fail from lack of
-            intelligence.<br><br>They fail from narrowed perspective.</p>
-          <br>
-          <p class="fade-up" style="color: var(--gold); opacity: 1; font-style: italic;">That narrowing is predictable.
-            Which means it is preventable.</p>
-        </div>
-        <div class="fade-up">
-          <ul class="numbered-list">
+  <section class="section" id="organisations" aria-labelledby="h-org">
+    <div class="wrap">
+      <div class="sec-grid">
+        <p class="eyebrow">FOR ORGANISATIONS</p>
+        <div class="sec-body">
+          <h2 id="h-org">AI that survives <em>Monday.</em></h2>
+          <div class="prose">
+            <p>A lot of AI training ends with a slide deck and good intentions. By Wednesday the tools are back in the drawer.</p>
+            <p>Mine ends with one or two pilots ready to start. Each has an owner, a check before anything reaches a customer, and a measure you already use.</p>
+          </div>
+          <ol class="offers">
             <li>
-              <span class="num">01</span>
-              <div class="num-content">
-                <h4 style="color: var(--black);">Internal noise rises</h4>
-                <p style="color: var(--charcoal);">Doubt, urgency, ego, and fear begin to accumulate and distort thinking.</p>
+              <div>
+                <h3>AI Working Session</h3>
+                <p>Three hours with your leadership team. A short form before, a check-in 30 days after. You leave with pilots ready to run.</p>
               </div>
+              <p class="price"><span class="amt-line">$4,500</span> <span class="alt">Sports bodies, schools and not-for-profits $3,000.</span></p>
             </li>
             <li>
-              <span class="num">02</span>
-              <div class="num-content">
-                <h4 style="color: var(--black);">Control tightens</h4>
-                <p style="color: var(--charcoal);">Leaders talk more, ask less, and decide faster than the situation warrants.</p>
+              <div>
+                <h3>AI Capability Programme</h3>
+                <p>Four sessions over six weeks for up to 15 staff. Everyone builds one real workflow from their own job. Your team keeps the playbook.</p>
               </div>
+              <p class="price"><span class="amt-line">$16,000</span> <span class="alt">Sports bodies, schools and not-for-profits $12,000.</span></p>
             </li>
             <li>
-              <span class="num">03</span>
-              <div class="num-content">
-                <h4 style="color: var(--black);">Perspective narrows</h4>
-                <p style="color: var(--charcoal);">Curiosity closes. Silo thinking emerges. Defensive posture replaces open inquiry.</p>
+              <div>
+                <h3>AI Build Sprint</h3>
+                <p>Four weeks to build one working AI tool with your team. Designed, tested on real work, handed over and taught.</p>
               </div>
+              <p class="price"><span class="amt-line">$18,000</span></p>
             </li>
-            <li>
-              <span class="num">04</span>
-              <div class="num-content">
-                <h4 style="color: var(--black);">Decision quality drops</h4>
-                <p style="color: var(--charcoal);">Short-term relief begins to replace long-term clarity. Reactive decisions accumulate.</p>
-              </div>
-            </li>
-            <li>
-              <span class="num">05</span>
-              <div class="num-content">
-                <h4 style="color: var(--black);">Alignment fractures</h4>
-                <p style="color: var(--charcoal);">Trust erodes quietly. Execution disconnects. Performance destabilises.</p>
-              </div>
-            </li>
-          </ul>
+          </ol>
+          <p class="section-link"><a class="link-arrow" href="/ai-for-organisations.html">How it works &rarr;</a></p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- WHAT I HELP LEADERS DO -->
-  <section>
-    <div class="container">
-      <span class="section-label fade-up">What I Help Leaders Do</span>
-      <h2 class="fade-up" style="margin-bottom: 60px;">Decision clarity under load.</h2>
-      <div class="card-grid">
-        <div class="card fade-up">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 6v6l4 2" />
-            </svg></div>
-          <h3>Slow Internal Tempo</h3>
-          <p>Create space between stimulus and response, before pressure demands an answer.</p>
-        </div>
-        <div class="card fade-up">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7M2 12h20M12 2v20" />
-            </svg></div>
-          <h3>Widen Perspective</h3>
-          <p>See what fear assumes rather than what is actually present. Ask what you're missing.</p>
-        </div>
-        <div class="card fade-up">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M16 3H8l-5 9 5 9h8l5-9-5-9zM12 8v8M8 12h8" />
-            </svg></div>
-          <h3>Navigate Authority Tension</h3>
-          <p>Hold challenge and alignment simultaneously, without losing either.</p>
-        </div>
-        <div class="card fade-up">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path
-                d="M20 6L9 17l-5-5M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-            </svg></div>
-          <h3>Decide Without Residue</h3>
-          <p>Make decisions that are aligned, considered, and don't fracture the system around them.</p>
-        </div>
-        <div class="card fade-up">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM12 8v4M12 16h.01" />
-            </svg></div>
-          <h3>Protect Trust Under Pressure</h3>
-          <p>Maintain coherence across teams when volatility increases and stakes are highest.</p>
-        </div>
-        <div class="card fade-up">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6M17 5l-2-2" />
-            </svg></div>
-          <h3>Sustain Performance</h3>
-          <p>Build leadership capacity that compounds rather than depletes across cycles.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- WHERE THIS APPLIES -->
-  <section>
-    <div class="container" style="text-align: center; max-width: 720px; margin: 0 auto;">
-      <span class="section-label fade-up">Where This Applies</span>
-      <h2 class="fade-up" style="margin-bottom: 28px;">Executive teams. Boards.<br>Elite sport. High-stakes strategy.
-      </h2>
-      <p class="fade-up" style="margin: 0 auto; text-align: center;">Organisations navigating change.</p>
-      <br>
-      <p class="fade-up" style="margin: 0 auto; text-align: center; color: var(--gold); opacity: 1;">Pressure is
-        universal. Clear thinking is not.</p>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- THE OUTCOME -->
-  <section style="background-color: var(--ivory); color: var(--charcoal);">
-    <div class="container">
-      <span class="section-label fade-up">The Outcome</span>
-      <h2 class="fade-up" style="margin-bottom: 60px; color: var(--black);">Cleaner decisions.</h2>
-      <div class="stat-strip fade-up" style="border-color: rgba(0,0,0,0.1);">
-        <div class="stat-item" style="border-color: rgba(0,0,0,0.1);">
-          <span class="stat-num">Stronger</span>
-          <span class="stat-label" style="color: var(--charcoal);">Alignment</span>
-        </div>
-        <div class="stat-item" style="border-color: rgba(0,0,0,0.1);">
-          <span class="stat-num">Less</span>
-          <span class="stat-label" style="color: var(--charcoal);">Fragmentation</span>
-        </div>
-        <div class="stat-item" style="border-color: rgba(0,0,0,0.1);">
-          <span class="stat-num">More</span>
-          <span class="stat-label" style="color: var(--charcoal);">Trust</span>
-        </div>
-      </div>
-      <br><br>
-      <p class="fade-up" style="font-size: 1.05rem; color: var(--charcoal);">Better execution. Sustainable performance
-        under stress. This is the difference between reacting and leading.</p>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <div class="divider"></div>
-
-  <!-- TESTIMONIAL -->
-  <section>
-    <div class="container">
-      <div class="testimonial-block fade-up" style="max-width: 800px; border-color: rgba(212, 175, 55, 0.3);">
-        <p
-          style="font-family:'Playfair Display',serif; font-style:italic; font-size: clamp(1.2rem,2.2vw,1.6rem); opacity:1; line-height:1.6; max-width: none;">
-          "This is the work that changes how a room thinks."</p>
-        <br>
-        <p
-          style="font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; color: var(--gold); font-weight: 600;">
-          James T., CEO, Financial Services</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- FINAL CTA -->
-  <section style="padding: 120px 0; background-color: var(--black);">
-    <div class="container" style="text-align: center; max-width: 680px; margin: 0 auto;">
-      <h2 class="fade-up" style="margin-bottom: 24px;">Ready to protect decision quality under pressure?</h2>
-      <p class="fade-up" style="margin: 0 auto 48px; text-align: center;">The conversation starts here.</p>
-      <div class="cta-group fade-up" style="justify-content: center;">
-        <a class='btn-primary' href='/speaking'>Explore Keynotes</a>
-        <a class='btn-secondary' href='/contact'>Get in Touch</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-left">
-          <img src="assets/ELV8_White.png" alt="ELV8"
-            style="height: 40px; margin-bottom: 24px; display: block;">
-          <p class="footer-tagline">Widen before you decide.</p>
-          <p style="font-size: 0.75rem; opacity: 0.5; margin-bottom: 16px;">Based in New Zealand. Available
-            internationally.</p>
-          <a href="mailto:shea@elv8.nz" class="footer-contact-link">✉ shea@elv8.nz ↗</a>
-          <a href="https://linkedin.com/in/sheamcaleese" target="_blank" rel="noopener" class="footer-contact-link">⟶ LinkedIn ↗</a>
-
-          <!-- Newsletter opt-in removed while the newsletter is parked. Re-add when it launches. -->
-        </div>
-        <div class="footer-right" style="text-align: right;">
-          <span class="footer-copy">© 2026 ELV8 Performance</span>
-          <div class="footer-links" style="margin-top: 12px; justify-content: flex-end;">
-            <a href='/'>Home</a>
-            <a href='/problem'>The Problem</a>
-            <a href='/framework'>Framework</a>
-            <a href='/speaking'>Speaking</a>
-            <a href='/workshops'>Workshops</a>
-            <a href='/advisory'>Advisory</a>
-            <a href='/about'>About</a>
-            <a href='/insights'>Insights</a>
-            <a href='/contact'>Contact</a>
+  <section class="section dark" id="coaches" aria-labelledby="h-coach">
+    <div class="wrap">
+      <div class="sec-grid">
+        <p class="eyebrow">FOR COACHES</p>
+        <div class="sec-body">
+          <h2 id="h-coach">The Connected <em>Coach</em></h2>
+          <div class="coach-grid">
+            <div class="prose">
+              <p>Six weeks. One live session a week, one real task between sessions, six coaches in the room.</p>
+              <p>You finish with AI set up for the work that eats your evenings: session plans, athlete feedback in your own voice, reports. You keep your setup, a template and prompt pack, a starter card and a recording of every session.</p>
+            </div>
+            <div class="coach-card">
+              <p class="price-line">Founding cohort <span class="fig">$700.</span> Standard cohort after that $1,200.</p>
+              <p class="refund">Full refund if you don't have a workflow saving you real time after two sessions.</p>
+              <p class="start" data-cohort-start>Starts once six coaches are in</p>
+              <div class="btn-row"><a class="btn btn-primary" href="/connected-coach/#apply">Apply for the founding cohort</a></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script src="main.js"></script>
+  <section class="section" id="speaking" aria-labelledby="h-speak">
+    <div class="wrap">
+      <div class="sec-grid">
+        <p class="eyebrow">SPEAKING</p>
+        <div class="sec-body">
+          <h2 id="h-speak">What pressure does to <em>good people.</em></h2>
+          <ul class="talks">
+            <li><h3>Athlete to Leader.</h3><p>What changes when the job stops being your own performance.</p></li>
+            <li><h3>Leading Under Pressure.</h3><p>Why smart people make poor calls when it matters, and what to train instead.</p></li>
+            <li><h3>The ACA Framework.</h3><p>Accountability, consistency, action: the habits that hold when the stakes go up.</p></li>
+          </ul>
+          <p class="meta">45, 60 or 90 minutes, in person or online.</p>
+          <div class="btn-row"><a class="btn btn-ghost" href="/contact.html?interest=Speaking">Ask about a date</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="h-about">
+    <div class="wrap">
+      <div class="sec-grid">
+        <p class="eyebrow">ABOUT</p>
+        <div class="sec-body">
+          <div class="about-grid">
+            <figure class="portrait"><img src="assets/shea_mcaleese.png" width="843" height="1024" alt="Shea McAleese" loading="lazy"></figure>
+            <div class="about-copy">
+              <h2 id="h-about">Shea <em>McAleese</em></h2>
+              <p class="dek">Four Olympic Games and 320 caps for New Zealand. Left home at 22 to play in Germany, coached in Belgium, and now coaches high performance hockey.</p>
+              <div class="prose">
+                <p>London, 2012. A penalty corner against Belgium, a skill trained thousands of times, and a mind that went somewhere else. That moment started the question he still works on: how do you stay clear when it counts?</p>
+                <p>AI turned out to be the same question. In 2026 he completed MIT Sloan Executive Education's <cite>Leading the AI-Driven Organization</cite>. He builds the systems he teaches, so he knows where they break.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="assets/elv8-white-alpha.png" width="704" height="217" alt="ELV8 Performance">
+        <p class="foot-note">ELV8 Performance is a 25ive Consulting Limited business. Napier, New Zealand.</p>
+      </div>
+      <div>
+        <div class="foot-links">
+          <a href="mailto:shea@elv8.nz">shea@elv8.nz</a>
+          <a href="https://linkedin.com/in/sheamcaleese" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr"> (opens in a new tab)</span></a>
+        </div>
+        <nav class="foot-nav" aria-label="Footer">
+          <a href="/ai-for-organisations.html">For organisations</a>
+          <a href="/connected-coach/">For coaches</a>
+          <a href="/speaking.html">Speaking</a>
+          <a href="/#about">About</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
 </body>
-
 </html>

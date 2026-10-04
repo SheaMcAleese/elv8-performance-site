@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /looks/
 
 Sitemap: https://elv8.nz/sitemap.xml

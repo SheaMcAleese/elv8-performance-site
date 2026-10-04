@@ -1,0 +1,21 @@
+# Old pages from the July 2026 site. Everything folds into the home page.
+/problem.html     /   301
+/framework.html   /   301
+/advisory.html    /   301
+/insights.html    /   301
+/workshops.html   /   301
+
+# The same pages without the .html, which is how the old site linked to them.
+/problem          /   301
+/framework        /   301
+/advisory         /   301
+/insights         /   301
+/workshops        /   301
+
+# About now lives on the home page.
+/about            /#about   301
+/about.html       /#about   301
+
+# No rule for /connected-coach. Netlify already sends /connected-coach to
+# /connected-coach/, and a rule of its own can loop because Netlify treats the
+# two paths as the same.
